@@ -15,7 +15,7 @@ export default async function HomePage({
 
   if (searchParams.code) {
     const res = await fetch(
-      `https://api.instagram.com/oauth/access_token?app_id=${INSTAGRAM_APP_ID}&app_secret=${INSTAGRAM_APP_SECRET}grant_type=authorization_code&redirect_uri=${INSTAGRAM_REDIRECT_URI}&code=${searchParams.code}&client_id=${INSTAGRAM_APP_ID}&client_secret=${INSTAGRAM_APP_SECRET}`,
+      `https://api.instagram.com/oauth/access_token?client_id=${INSTAGRAM_APP_ID}&client_secret=${INSTAGRAM_APP_SECRET}grant_type=authorization_code&redirect_uri=${INSTAGRAM_REDIRECT_URI}&code=${searchParams.code}`,
       {
         method: "POST",
       },
