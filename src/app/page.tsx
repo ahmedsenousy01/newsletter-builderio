@@ -13,34 +13,34 @@ export default async function HomePage({
 }) {
   const apiRoute = `https://api.instagram.com/oauth/authorize/?client_id=${INSTAGRAM_APP_ID}&redirect_uri=${INSTAGRAM_REDIRECT_URI}&response_type=code&scope=user_profile,user_media`;
 
-  if (searchParams.code) {
-    const res = await fetch(`https://api.instagram.com/oauth/access_token`, {
-      method: "POST",
-      body: JSON.stringify({
-        client_id: INSTAGRAM_APP_ID,
-        client_secret: INSTAGRAM_APP_SECRET,
-        grant_type: "authorization_code",
-        redirect_uri: INSTAGRAM_REDIRECT_URI,
-        code: searchParams.code,
-      }),
-    });
-    const data = await res.json();
-    console.log(data);
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-        <pre>
-          {JSON.stringify({
-            client_id: INSTAGRAM_APP_ID,
-            client_secret: INSTAGRAM_APP_SECRET,
-            grant_type: "authorization_code",
-            redirect_uri: INSTAGRAM_REDIRECT_URI,
-            code: searchParams.code,
-          })}
-        </pre>
-      </div>
-    );
-  }
+  // if (searchParams.code) {
+  //   const res = await fetch(`https://api.instagram.com/oauth/access_token`, {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       client_id: INSTAGRAM_APP_ID,
+  //       client_secret: INSTAGRAM_APP_SECRET,
+  //       grant_type: "authorization_code",
+  //       redirect_uri: INSTAGRAM_REDIRECT_URI,
+  //       code: searchParams.code,
+  //     }),
+  //   });
+  //   const data = await res.json();
+  //   console.log(data);
+  //   return (
+  //     <div className="flex h-screen items-center justify-center">
+  //       <pre>{JSON.stringify(data, null, 2)}</pre>
+  //       <pre>
+  //         {JSON.stringify({
+  //           client_id: INSTAGRAM_APP_ID,
+  //           client_secret: INSTAGRAM_APP_SECRET,
+  //           grant_type: "authorization_code",
+  //           redirect_uri: INSTAGRAM_REDIRECT_URI,
+  //           code: searchParams.code,
+  //         })}
+  //       </pre>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="flex h-screen flex-col items-center justify-center">
