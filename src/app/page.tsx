@@ -11,15 +11,19 @@ export default async function HomePage({
 }: {
   searchParams: { code?: string; access_token?: string };
 }) {
-  const apiRoute = `https://api.instagram.com/oauth/authorize/?app_id=${INSTAGRAM_APP_ID}&redirect_uri=${INSTAGRAM_REDIRECT_URI}&response_type=code&scope=user_profile,user_media`;
+  const apiRoute = `https://api.instagram.com/oauth/authorize/?client_id=${INSTAGRAM_APP_ID}&redirect_uri=${INSTAGRAM_REDIRECT_URI}&response_type=code&scope=user_profile,user_media`;
 
   if (searchParams.code) {
-    const res = await fetch(
-      `https://api.instagram.com/oauth/access_token?client_id=${INSTAGRAM_APP_ID}&client_secret=${INSTAGRAM_APP_SECRET}grant_type=authorization_code&redirect_uri=${INSTAGRAM_REDIRECT_URI}&code=${searchParams.code}`,
-      {
-        method: "POST",
-      },
-    );
+    const res = await fetch(`https://api.instagram.com/oauth/access_token`, {
+      method: "POST",
+      body: JSON.stringify({
+        client_id: INSTAGRAM_APP_ID,
+        client_secret: INSTAGRAM_APP_SECRET,
+        grant_type: "authorization_code",
+        redirect_uri: INSTAGRAM_REDIRECT_URI,
+        code: searchParams.code,
+      }),
+    });
     const data = await res.json();
     console.log(data);
     return (
