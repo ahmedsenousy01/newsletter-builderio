@@ -14,7 +14,7 @@ export const env = createEnv({
     INSTAGRAM_APP_ID: z.string(),
     INSTAGRAM_APP_SECRET: z.string(),
     INSTAGRAM_USER_TOKEN: z.string(),
-    INSTAGRAM_REDIRECT_URI: z.string().url(),
+    INSTAGRAM_REDIRECT_URI: z.string(),
   },
 
   /**
