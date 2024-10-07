@@ -1,12 +1,12 @@
-import { redirect } from "next/navigation";
-
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 const INSTAGRAM_APP_ID = 488837020617937;
 const INSTAGRAM_APP_SECRET = "a5088330f02b37fdce69759089810ba1";
 const INSTAGRAM_USER_TOKEN =
   "IGQWRQWHZADVm5yZAFA2ZAmxpamZAULS1MaWFCUWt0RWpIVzZAiLXFMOW12ZA0wyOXZA2RHBVMTFKcjZAiZAWhpNzdJeWlsalQzaDlYX0xmbTc5OUwzVVlzSXZAoTV9TUDFSYjl2amFqeVpYWFdoQjlsdEp4ZAkFkaWlGRGVWRFUZD";
 const INSTAGRAM_REDIRECT_URI = "https://newsletter-builderio.vercel.app";
 
-export default function HomePage({
+export default async function HomePage({
   searchParams,
 }: {
   searchParams: { code?: string; access_token?: string };
@@ -14,17 +14,18 @@ export default function HomePage({
   const apiRoute = `https://api.instagram.com/oauth/authorize/?app_id=${INSTAGRAM_APP_ID}&redirect_uri=${INSTAGRAM_REDIRECT_URI}&response_type=code&scope=user_profile,user_media`;
 
   if (searchParams.code) {
-    redirect(
+    const res = await fetch(
       `https://api.instagram.com/oauth/access_token?app_id=${INSTAGRAM_APP_ID}&app_secret=${INSTAGRAM_APP_SECRET}grant_type=authorization_code&redirect_uri=${INSTAGRAM_REDIRECT_URI}&code=${searchParams.code}`,
     );
-  }
-
-  if (searchParams.access_token) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        {searchParams.access_token}
-      </div>
-    );
+    const data = await res.json();
+    console.log(data);
+    if (data.access_token) {
+      return (
+        <div className="flex h-screen items-center justify-center">
+          {data.access_token}
+        </div>
+      );
+    }
   }
 
   return <a href={apiRoute}>authorize</a>;
