@@ -22,13 +22,11 @@ export default async function HomePage({
     );
     const data = await res.json();
     console.log(data);
-    if (data.access_token) {
-      return (
-        <div className="flex h-screen items-center justify-center">
-          {data.access_token}
-        </div>
-      );
-    }
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      </div>
+    );
   }
 
   return <a href={apiRoute}>authorize</a>;
