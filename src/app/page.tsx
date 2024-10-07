@@ -29,13 +29,31 @@ export default async function HomePage({
     return (
       <div className="flex h-screen items-center justify-center">
         <pre>{JSON.stringify(data, null, 2)}</pre>
+        <pre>
+          {JSON.stringify({
+            client_id: INSTAGRAM_APP_ID,
+            client_secret: INSTAGRAM_APP_SECRET,
+            grant_type: "authorization_code",
+            redirect_uri: INSTAGRAM_REDIRECT_URI,
+            code: searchParams.code,
+          })}
+        </pre>
       </div>
     );
   }
 
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex h-screen flex-col items-center justify-center">
       <a href={apiRoute}>authorize</a>
+      <pre>
+        {JSON.stringify({
+          client_id: INSTAGRAM_APP_ID,
+          client_secret: INSTAGRAM_APP_SECRET,
+          grant_type: "authorization_code",
+          redirect_uri: INSTAGRAM_REDIRECT_URI,
+          code: searchParams.code,
+        })}
+      </pre>
     </div>
   );
 }
