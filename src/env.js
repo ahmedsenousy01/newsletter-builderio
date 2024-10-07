@@ -11,10 +11,6 @@ export const env = createEnv({
     BUILDER_PRIVATE_API_KEY: z.string(),
     NODEMAILER_EMAIL: z.string(),
     NODEMAILER_PASSWORD: z.string(),
-    INSTAGRAM_APP_ID: z.string(),
-    INSTAGRAM_APP_SECRET: z.string(),
-    INSTAGRAM_USER_TOKEN: z.string(),
-    INSTAGRAM_REDIRECT_URI: z.string(),
   },
 
   /**
@@ -37,10 +33,6 @@ export const env = createEnv({
     NEXT_PUBLIC_BUILDER_API_KEY: process.env.NEXT_PUBLIC_BUILDER_API_KEY,
     NODEMAILER_EMAIL: process.env.NODEMAILER_EMAIL,
     NODEMAILER_PASSWORD: process.env.NODEMAILER_PASSWORD,
-    INSTAGRAM_APP_ID: process.env.INSTAGRAM_APP_ID,
-    INSTAGRAM_APP_SECRET: process.env.INSTAGRAM_APP_SECRET,
-    INSTAGRAM_USER_TOKEN: process.env.INSTAGRAM_USER_TOKEN,
-    INSTAGRAM_REDIRECT_URI: process.env.INSTAGRAM_REDIRECT_URI,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**
