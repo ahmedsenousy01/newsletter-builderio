@@ -15,7 +15,7 @@ export default async function HomePage({
 
   if (searchParams.code) {
     const res = await fetch(
-      `https://api.instagram.com/oauth/access_token?client_id=${INSTAGRAM_APP_ID}&app_secret=${INSTAGRAM_APP_SECRET}grant_type=authorization_code&redirect_uri=${INSTAGRAM_REDIRECT_URI}&code=${searchParams.code}`,
+      `https://api.instagram.com/oauth/access_token?app_id=${INSTAGRAM_APP_ID}&app_secret=${INSTAGRAM_APP_SECRET}grant_type=authorization_code&redirect_uri=${INSTAGRAM_REDIRECT_URI}&code=${searchParams.code}&client_id=${INSTAGRAM_APP_ID}&client_secret=${INSTAGRAM_APP_SECRET}`,
       {
         method: "POST",
       },
@@ -29,6 +29,10 @@ export default async function HomePage({
     );
   }
 
-  return <a href={apiRoute}>authorize</a>;
+  return (
+    <div className="flex h-screen items-center justify-center">
+      <a href={apiRoute}>authorize</a>;
+    </div>
+  );
 }
 // AQAgzMy2bcUxqThKR_3Fvi-3jHumleRzK3Uv4SLn7PhBjk3GtNKl5OT4wO8NZbeXcon6b7J7SPYE9_5e0QGvnHAaZyWPs96FXH86no0w0XIgP47cLTQogj80NNOC1EVz7Kj6eakWi5_r8iiFvT8747CM7Z7VmpmEfkzPZOqt8JTbeQV31ktXUuabm17LYd1NowGSjb9TxE46OWXtFSnOX6GGg_B-GT3PHR8kjJgFfA6JSg
